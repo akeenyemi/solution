@@ -1,0 +1,89 @@
+Question (1) 
+
+To traverse a tree, depth first, a search through the tree, starting from the root has to be carried out.
+A branch of the tree is traced including the "sub-branches" until the last "sub-branch" is reached. The search is then started again from the next branch at the root, until all the branches and by extension, their "sub-branches" have been searched.
+
+A pseudocode like below will work:
+
+DepthFirstTraversal(tree, branch):
+    branch.reached = true
+    for subBranch in branch.subBranches():
+        if not subBranch.reached:
+            depthFirstSearch(tree, child)
+
+The process starts by passing tree and the first branch as arguments of the pseudocode, this will mark the branch as "reached" so the branch will not be processed again.
+This is continued and all the "sub-branches" within this branch are also passed to the function.
+
+This process is continued untill all branches on the tree and their sub-branches have been searched by the function.
+
+
+
+Question (2)
+
+def find_chars(string1, string2):
+
+seen = []
+for c in string1:
+    if c in string2:
+        seen.append(c)
+return ''.join(seen)
+
+
+def find_chars_2(string1, string2):
+
+seen, unique = [], set(string2)
+for c in string1:
+    if c in unique:
+        found.append(c)
+return ''.join(found)
+
+
+
+Question (3)
+
+def compactArray(array):
+former = array[0]
+    
+i = 1
+while (i < len(array)):
+    if former == array[i]:
+        del array[i]
+    else:
+        former = array[i]
+        i += 1
+return len(array)
+
+
+
+Question (4)
+
+def rotateArray(array, pos):
+
+if len(array):
+
+    pos = abs(pos) % len(array)
+    if pos:
+        part = array[-pos:]
+        del array[-pos:]
+            
+        part.reverse()
+        for x in part:
+            array.insert(0, x)
+return array
+
+
+Question (5)
+
+def lcm(array):
+
+i, repo = 0, {}
+while i < 10000: 
+    i += 1
+    for n in array:
+        multiple = n * i
+        if not repo.has_key(multiple):
+            repo[multiple] = 1
+        else:
+            repo[multiple] += 1
+            if repo[multiple] == len(array):
+                return multiple
